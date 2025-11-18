@@ -3,12 +3,6 @@
 
 #include <string>
 
-// ------------------------------------------------------------
-// Color enumeration for both Windows and Linux.
-// These values match Windows console color codes.
-// Linux will convert them into ANSI escape codes.
-// ------------------------------------------------------------
-
 // Color codes
 enum Color {
     BLACK = 0,
@@ -19,7 +13,6 @@ enum Color {
     MAGENTA = 5,
     YELLOW = 6,
     WHITE = 7,
-     // Bright versions of the same colors
     BRIGHT_BLACK = 8,
     BRIGHT_BLUE = 9,
     BRIGHT_GREEN = 10,

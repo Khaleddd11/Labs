@@ -10,7 +10,6 @@
         int ch = _getch();
         
         // Check if it's an extended key (2 bytes on Windows)
-        // so we ignore first key and return the real key
         if (ch == 0 || ch == 224) {
             ch = _getch(); // Get the second byte
         }
@@ -19,7 +18,7 @@
     }
     
 #else
-    #include <termios.h>  // termios allows modifying the terminal mode.
+    #include <termios.h>
     #include <unistd.h>
     
     int getKey() {
@@ -65,7 +64,7 @@
          * So we check if the first character is ESC (27),
          * then read the following bytes to identify the key.
          */
-        if (ch == 27) {  // ESC
+        if (ch == 27) {
             ch = getchar();
             if (ch == 91) { // '[' character
                 ch = getchar();

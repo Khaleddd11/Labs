@@ -2,26 +2,39 @@
 #include "keyboard.h"
 #include <iostream>
 
+
+/*
+* ===================== MAIN MENU SYSTEM =====================
+* This program creates a simple text-based UI menu using:
+* - Cursor movement and colored text (terminal.h)
+* - Instant keyboard input (keyboard.h)
+* The user can navigate using Up/Down arrows and select an option.
+* Each screen waits for BACKSPACE to return to the main menu.
+*/
+
+
+// Draw the main menu with the currently selected item highlighted
 void showMenu(int selected) {
-    clearScreen();
+    clearScreen(); // Clear old frame before drawing
     
     // Calculate middle of screen (assume 80x25 terminal)
     int centerX = 35;
     int centerY = 10;
     
     // Display menu options
+    // Draw "New"
     if (selected == 0) {
-        printAt(centerX, centerY, BLUE, "New");
+        printAt(centerX, centerY, BLUE, "New"); // Highlighted
     } else {
         printAt(centerX, centerY, WHITE, "New");
     }
-    
+    // Draw "Display"
     if (selected == 1) {
         printAt(centerX, centerY + 2, BLUE, "Display");
     } else {
         printAt(centerX, centerY + 2, WHITE, "Display");
     }
-    
+    // Draw "Exit"
     if (selected == 2) {
         printAt(centerX, centerY + 4, BLUE, "Exit");
     } else {
@@ -29,6 +42,8 @@ void showMenu(int selected) {
     }
 }
 
+
+// Screen shown when the user selects "New"
 void newScreen() {
     clearScreen();
     printAt(10, 5, GREEN, "You are in NEW section");
