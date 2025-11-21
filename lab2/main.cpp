@@ -91,6 +91,18 @@ int main() {
                 selected = 2; // Wrap around to bottom
             }
         }
+        else if (key == KEY_LEFT) {
+    selected--;
+    if (selected < 0) {
+        selected = 2; // Wrap to bottom
+    }
+}
+else if (key == KEY_RIGHT) {
+    selected++;
+    if (selected > 2) {
+        selected = 0; // Wrap to top
+    }
+}
         else if (key == KEY_HOME) {
             selected = 0; // Go to first option
         }
