@@ -184,14 +184,6 @@ void displayAllEmployees(Employee employees[], int count) {
         printAt(15, y + 2, WHITE, "Salary: $" + doubleToStr(employees[i].salary));
         y += 4;
         
-        // If too many employees, paginate
-        if (y > 20 && i < count - 1) {
-            printAt(10, y, YELLOW, "Press any key for more...");
-            getKey();
-            clearScreen();
-            printAt(10, 2, BRIGHT_YELLOW, "===== ALL EMPLOYEES (continued) =====");
-            y = 4;
-        }
     }
     
     printAt(10, y + 1, WHITE, "--------------------------------------------");
