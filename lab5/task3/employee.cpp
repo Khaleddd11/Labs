@@ -22,7 +22,8 @@ string doubleToStr(double num) {
 
 // ============================================================================
 // Function: getStringInput
-// Purpose: Get a string input from user (for name)
+// Purpose: Let the user type a NAME using letters + space.
+// Shows the text on screen in real time.
 // ============================================================================
 string getStringInput(int x, int y) {
     string input = "";
@@ -33,7 +34,7 @@ string getStringInput(int x, int y) {
         
         int key = getKey();
         
-        // Enter key - done
+         // User pressed ENTER → finish typing
         if (key == KEY_ENTER && input.length() > 0) {
             return input;
         }
@@ -43,7 +44,7 @@ string getStringInput(int x, int y) {
             input = input.substr(0, input.length() - 1);
         }
         
-        // ESC - cancel
+        // ESC → cancel input and return empty string
         if (key == KEY_ESC) {
             return "";  // Empty string means cancelled
         }
@@ -62,11 +63,14 @@ string getStringInput(int x, int y) {
 // ============================================================================
 // Function: getNumberInput
 // Purpose: Get a number input from user (for age or salary)
+// If allowDecimal = true -> user can type '.' once.
 // ============================================================================
 string getNumInput(int x, int y, bool allowDecimal) {
     string input = "";
-    bool hasDecimal = false;
-    
+    // this boolean wil be turned to true later on to mark that we used the decimal once,
+    // so we cant make 2 decimals in same number
+    bool hasDecimal = false; 
+
     while (true) {
         // Display current input with cursor
         printAt(x, y, BRIGHT_CYAN, input + "_  ");
