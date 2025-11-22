@@ -3,8 +3,6 @@
 using namespace std;
 
 // ============================================================================
-// Function: printArray2D
-// Purpose: Print a 2D array using pointers
 // Parameters:
 //   - arr: pointer to first element of 2D array
 //   - rows: number of rows

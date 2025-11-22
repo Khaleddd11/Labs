@@ -62,9 +62,9 @@ void resetColor() {
 }
 
 void printAt(int x, int y, Color color, const std::string& text) {
-    moveCursor(x, y); // go to x and y 
-    setColor(color); // change color 
-    std::cout << text; // print the text 
-    resetColor(); 
-    std::cout.flush(); // make it appear imeediatly 
+    moveCursor(x, y);
+    setColor(color);
+    std::cout << text;
+    resetColor();
+    std::cout.flush();
 }
