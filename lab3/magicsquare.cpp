@@ -123,7 +123,6 @@ void createMagicSquare(int n) {
     
     // Display title
     printAt(10, 2, YELLOW, "Magic Square of size " + to_string(n) + "x" + to_string(n));
-    printAt(10, 3, CYAN, "Watch the numbers appear one by one...");
     
     // Calculate starting position for displaying
     int startX = 15;
@@ -133,7 +132,9 @@ void createMagicSquare(int n) {
     int row = 0;
     int col = n / 2;
     
-    // Fill the magic square using Siamese method with animation
+    // Fill the magic square using Siamese method 
+    // n: size of the magic square (number of rows/columns)
+    // n * n: total number of cells in the square
     for (int num = 1; num <= n * n; num++) {
         // Place number in square array
         square[row][col] = num;
@@ -155,7 +156,13 @@ void createMagicSquare(int n) {
         printAt(startX + col * 5, startY + row * 2, CYAN, numStr);
         
         // Calculate next position
-        int newRow = (row - 1 + n) % n;  // Move up (with wrap-around)
+     // Default move: UP one row, RIGHT one column
+        // ---------------------
+        // Note on "(row - 1 + n) % n":
+        // - row - 1 → move up
+        // - + n → ensures result is non-negative if we go above row 0
+        // - % n → wraps around to stay inside 0..n-1
+        int newRow = (row - 1 + n) % n;  // Move up  one row (with wrap-around)
         int newCol = (col + 1) % n;       // Move right (with wrap-around)
         
         // If position is already filled, move down instead
