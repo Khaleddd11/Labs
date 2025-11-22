@@ -132,30 +132,13 @@ bool addEmployee(Employee employees[], int &count) {
     printAt(10, 8, WHITE, "Enter Age: ");
     string ageStr = getNumInput(21, 8, false);  // No decimal for age
     if (ageStr == "") return false;
-    int age = 0;
-    for (size_t i = 0; i < ageStr.length(); i++) {
-        age = age * 10 + (ageStr[i] - '0');
-    }
-    
+    int age = stoi(ageStr);  // Converts string to int
+
     // Get salary
     printAt(10, 10, WHITE, "Enter Salary: ");
     string salaryStr = getNumInput(24, 10, true);  // Allow decimal
     if (salaryStr == "") return false;
-    double salary = 0;
-    double decimal = 0;
-    bool afterDecimal = false;
-    double divisor = 10;
-    for (size_t i = 0; i < salaryStr.length(); i++) {
-        if (salaryStr[i] == '.') {
-            afterDecimal = true;
-        } else if (afterDecimal) {
-            decimal += (salaryStr[i] - '0') / divisor;
-            divisor *= 10;
-        } else {
-            salary = salary * 10 + (salaryStr[i] - '0');
-        }
-    }
-    salary += decimal;
+    double salary = stod(salaryStr);  // Simple! Converts string to double
     
     // Store employee
     employees[count].name = name;
