@@ -47,7 +47,7 @@ void moveCursor(int x, int y) {
 }
 
 void clearScreen() {
-       // \033[2J  → clear entire screen
+    // \033[2J  → clear entire screen
     // \033[H   → move cursor to top-left (0,0)
 
      // "\033" = ESC (Escape character, ASCII 27)

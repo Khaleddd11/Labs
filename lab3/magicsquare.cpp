@@ -45,27 +45,27 @@ int getNumberInput() {
         
         // If Enter is pressed
         if (key == KEY_ENTER && input.length() > 0) {
-            // Convert string to number
-            int num = 0;
-            bool isValid = true;
-            
             // Check if all characters are digits
-            for (int i = 0; i < input.length(); i++) {
+            bool isValid = true;
+            for (size_t i = 0; i < input.length(); i++) {
                 if (input[i] < '0' || input[i] > '9') {
                     isValid = false;
                     break;
                 }
-                num = num * 10 + (input[i] - '0');
             }
             
-            // Validate the number
+            // If not valid (contains non-digits)
             if (!isValid) {
                 printAt(10, 9, RED, "Error: Please enter only numbers!");
                 printAt(10, 10, YELLOW, "Press any key to try again...");
                 getKey();
-                return -1; // Return -1 to indicate error
+                return -1;
             }
             
+            // Convert string to int using stoi (simple!)
+            int num = stoi(input);
+            
+            // Validate the number
             if (num < 3) {
                 printAt(10, 9, RED, "Error: Number must be at least 3!");
                 printAt(10, 10, YELLOW, "Press any key to try again...");
