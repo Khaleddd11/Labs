@@ -49,6 +49,13 @@ void moveCursor(int x, int y) {
 void clearScreen() {
        // \033[2J  → clear entire screen
     // \033[H   → move cursor to top-left (0,0)
+
+     // "\033" = ESC (Escape character, ASCII 27)
+    // Everything after ESC tells the terminal to do a special action
+    //
+    // "[2J" = Clear the entire screen
+    // "[H"  = Move the cursor to the top-left corner (row 0, col 0)
+    //
     std::cout << "\033[2J\033[H";
 }
 #endif
