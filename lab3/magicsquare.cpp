@@ -140,6 +140,7 @@ void createMagicSquare(int n) {
         square[row][col] = num;
         
         // Display the number immediately with animation
+        //to_string convert numeric value to string from the #include <string> header
         string numStr = to_string(num);
         
         // Add spacing for alignment
@@ -147,6 +148,7 @@ void createMagicSquare(int n) {
         if (num < 100) numStr = " " + numStr;
         
         // Show the number in bright green as it appears
+         //col * 5 and row * 2 to space out numbers 
         printAt(startX + col * 5, startY + row * 2, BRIGHT_GREEN, numStr);
         
         // Pause to show animation (200ms delay)
