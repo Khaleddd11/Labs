@@ -2,7 +2,7 @@
 #include "terminal.h"
 #include "keyboard.h"
 #include <iostream>
-#include <fstream>
+#include <fstream> // file read/write
 #include <sstream>
 
 using namespace std;
@@ -61,9 +61,8 @@ string getInput(int x, int y, int maxLen) {
     }
 }
 
-// ============================================================================
+
 // Helper: Get number input from user (for buffer size)
-// ============================================================================
 int getNumberInput(int x, int y) {
     string input = "";
     
@@ -123,7 +122,7 @@ Editor* createEditor(int size) {
     // Step 4: Fill buffer with null characters (empty)
     // Using pointer arithmetic to access each position
     for (int i = 0; i <= size; i++) {
-        *(editor->text + i) = '\0';  // Same as editor->text[i] = '\0'
+        *(editor->text + i) = '\0'; 
     }
     
     return editor;  // Return pointer to the new editor
@@ -140,7 +139,7 @@ void destroyEditor(Editor *editor) {
     }
     
     // Step 1: Free the text buffer first
-    // Must delete[] because we used new[]
+    // Must delete[] because we used new[],
     if (editor->text != NULL) {
         delete[] editor->text;
     }
@@ -169,15 +168,17 @@ void displayEditor(Editor *editor, int startY) {
     // Display each character using POINTER ARITHMETIC
     for (int i = 0; i < editor->size; i++) {
         // Get character at position i using pointer
-        char ch = *(editor->text + i);  // Same as editor->text[i]
+        char ch = *(editor->text + i);  
         
-        // If this is cursor position, highlight it
+        // Compare the current loop index 'i' with the stored cursor position.
         if (i == editor->cursor) {
             if (ch == '\0' || i >= editor->length) {
-                // Empty position - show highlighted space
+                /// Empty position (Cursor is at the end of the line) - show highlighted space.
+                // Renders an underscore in bright green to indicate where the next character will go.
                 printAt(startX + 2 + i, startY + 1, BRIGHT_GREEN, "_");
             } else {
-                // Character at cursor - highlight it
+                // Character at cursor position - highlight it.
+                // Renders the character itself in bright green, indicating it's selected.
                 string s(1, ch);
                 printAt(startX + 2 + i, startY + 1, BRIGHT_GREEN, s);
             }
@@ -322,6 +323,14 @@ bool saveToFile(Editor *editor) {
     }
     
     // Step 2: Check if file exists
+// Use ifstream (Input File Stream) only to attempt opening the file for reading.
+// If successful, the file exists.
+
+// EXPLANATION OF .c_str():
+        // 1. 'filename' is a std::string (a smart C++ object).
+        // 2. 'open()' in older C++ versions expects a raw C-style string pointer (char*).
+        // 3. .c_str() returns a read-only pointer to the underlying character array in memory.
+        // It acts as a bridge: Smart Object -> Raw Memory Address.
     ifstream checkFile(filename.c_str());
     bool fileExists = checkFile.good();
     checkFile.close();
@@ -337,30 +346,38 @@ bool saveToFile(Editor *editor) {
         printAt(5, 14, CYAN, "Choose (1/2/3): ");
         
         while (true) {
+            // Wait for valid user input
             int key = getKey();
             if (key == '1') {
-                writeMode = 0;
+                writeMode = 0; // Choose Overwrite mode
                 break;
             } else if (key == '2') {
-                writeMode = 1;
+                writeMode = 1; // Choose Append mode
                 break;
             } else if (key == '3' || key == KEY_ESC) {
+                // Cancel operation and exit function
                 printAt(5, 16, RED, "Cancelled.");
                 printAt(5, 18, WHITE, "Press any key...");
                 getKey();
-                return false;
+                return false; // Function returns failure
             }
         }
     }
     
     // Step 4: Open file and write
-    ofstream file;
+    ofstream file; // Output File Stream (for writing)
     
     if (writeMode == 0) {
         // Overwrite mode - creates new or overwrites existing
+        // Overwrite mode: file.open() default behavior is to TRUNCATE (erase) the file.
         file.open(filename.c_str());
     } else {
         // Append mode - add to end of file
+        // Append mode: Use ios::app flag to position the cursor at the end of the file.
+        // 1. 'ios' (Input Output Stream): The base class that holds file settings.
+        // 2. '::' (Scope Resolution Operator): Tells the compiler "Look INSIDE the 
+        //    ios class to find the definition of 'app'".
+        // 3. 'app' (Append): A specific flag bit.
         file.open(filename.c_str(), ios::app);
     }
     
@@ -376,9 +393,11 @@ bool saveToFile(Editor *editor) {
     // Loop through each character in buffer
     for (int i = 0; i < editor->length; i++) {
         char ch = *(editor->text + i);  // Get char using pointer
+
+        // Write the character to the output stream (file).
         file << ch;                      // Write to file
     }
-    file << endl;  // Add newline at end
+    file << endl;  // Add newline at end so file ends properly.
     
     // Step 6: Close file
     file.close();

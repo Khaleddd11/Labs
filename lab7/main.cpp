@@ -49,6 +49,44 @@ int main() {
     Complex quotient = c1 / c2;  // Uses operator/
     cout << c1 << " / " << c2 << " = " << quotient << endl << endl;
     
+
+// Test compound assignment operators
+cout << "\n--- Compound Assignment Operators ---" << endl;
+Complex c5(5, 3);
+Complex c6(2, 1);
+
+cout << "c5 = " << c5 << endl;
+cout << "c6 = " << c6 << endl;
+
+c5 += c6;
+cout << "After c5 += c6: " << c5 << endl;
+
+c5 -= c6;
+cout << "After c5 -= c6: " << c5 << endl;
+
+c5 *= c6;
+cout << "After c5 *= c6: " << c5 << endl;
+
+c5 /= c6;
+cout << "After c5 /= c6: " << c5 << endl;
+
+// Test increment/decrement
+cout << "\n--- Increment and Decrement ---" << endl;
+Complex c7(3, 4);
+
+cout << "c7 = " << c7 << endl;
+cout << "++c7 = " << ++c7 << endl;
+cout << "c7 after prefix++: " << c7 << endl;
+
+cout << "\nc7++ = " << c7++ << endl;
+cout << "c7 after postfix++: " << c7 << endl;
+
+cout << "\n--c7 = " << --c7 << endl;
+cout << "c7 after prefix--: " << c7 << endl;
+
+cout << "\nc7-- = " << c7-- << endl;
+cout << "c7 after postfix--: " << c7 << endl;
+
     // ========================================================================
     // 6. COMPARISON
     // ========================================================================

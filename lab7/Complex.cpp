@@ -49,6 +49,9 @@ void Complex::setImaginary(double i) {
 // ============================================================================
 
 // Example: (3+4i) + (1+2i) = 4+6i
+// the const at the end refers to the current object (this) being constant, 
+// Running this function will not modify the object that called it."
+// when we calculate A + B, A should not change either. The result is a new thing entirely.
 Complex Complex::operator+(const Complex &other) const {
     // Create new Complex number with sum
     Complex result;
@@ -102,6 +105,91 @@ Complex Complex::operator/(const Complex &other) const {
     result.imaginary = ((this->imaginary * other.real) - (this->real * other.imaginary)) / denominator;
     
     return result;
+}
+
+
+
+// ============================================================================
+// COMPOUND ASSIGNMENT OPERATORS
+// ============================================================================
+
+// += operator: adds another complex number to this one
+// Example: c1 += c2 means c1 = c1 + c2
+Complex& Complex::operator+=(const Complex &other) {
+    // just add to our own values
+    this->real += other.real;
+    this->imaginary += other.imaginary;
+    return *this;  // return reference to this object
+}
+
+// -= operator: subtracts another complex number from this one
+Complex& Complex::operator-=(const Complex &other) {
+    this->real -= other.real;
+    this->imaginary -= other.imaginary;
+    return *this;
+}
+
+// /= operator: divides this complex number by another
+Complex& Complex::operator/=(const Complex &other) {
+    double denominator = (other.real * other.real) + (other.imaginary * other.imaginary);
+    
+    if (denominator == 0) {
+        cout << "Error: Division by zero!" << endl;
+        return *this;
+    }
+    
+    // save old values
+    double oldReal = this->real;
+    double oldImag = this->imaginary;
+    
+    // calculate new values
+    this->real = ((oldReal * other.real) + (oldImag * other.imaginary)) / denominator;
+    this->imaginary = ((oldImag * other.real) - (oldReal * other.imaginary)) / denominator;
+    
+    return *this;
+}
+
+
+
+
+
+// ============================================================================
+// INCREMENT AND DECREMENT OPERATORS
+// ============================================================================
+
+// Prefix ++: increment both real and imaginary by 1, then return
+// Example: ++c means c becomes (real+1) + (imag+1)i
+Complex& Complex::operator++() {
+    ++this->real;
+    ++this->imaginary;
+    return *this;  // return reference to modified object
+}
+
+// Postfix ++: return old value, then increment
+// The int parameter is just to differentiate from prefix
+Complex Complex::operator++(int) {
+    // save old value
+    Complex temp = *this;
+    
+    // increment this object
+    ++(*this);  // calls prefix ++
+    
+    // return old value
+    return temp;
+}
+
+// Prefix --: decrement both parts by 1, then return
+Complex& Complex::operator--() {
+    --this->real;
+    --this->imaginary;
+    return *this;
+}
+
+// Postfix --: return old value, then decrement
+Complex Complex::operator--(int) {
+    Complex temp = *this;
+    --(*this);  // calls prefix --
+    return temp;
 }
 
 // ============================================================================

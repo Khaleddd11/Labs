@@ -58,9 +58,12 @@ public:
     
     // Multiplication: (a+bi) * (c+di) = (ac-bd) + (ad+bc)i
     Complex operator*(const Complex &other) const;
-    
-    // Division: (a+bi) / (c+di) = [(ac+bd) + (bc-ad)i] / (c²+d²)
+
+    // Division: (a+bi) / (c+di)
+    // Formula: multiply top and bottom by conjugate of denominator
+    // Result: [(ac+bd) + (bc-ad)i] / (c²+d²)
     Complex operator/(const Complex &other) const;
+     
     
     // ========================================================================
     // COMPARISON OPERATOR OVERLOADING
@@ -71,6 +74,37 @@ public:
     
     // Not equal
     bool operator!=(const Complex &other) const;
+
+    // ========================================================================
+// COMPOUND ASSIGNMENT OPERATORS
+// ========================================================================
+
+// += operator: c1 += c2
+Complex& operator+=(const Complex &other);
+
+// -= operator: c1 -= c2
+Complex& operator-=(const Complex &other);
+
+// /= operator: c1 /= c2
+Complex& operator/=(const Complex &other);
+
+
+
+// ========================================================================
+// INCREMENT AND DECREMENT OPERATORS
+// ========================================================================
+
+// Prefix increment: ++c (increments then returns)
+Complex& operator++();
+
+// Postfix increment: c++ (returns then increments)
+Complex operator++(int);
+
+// Prefix decrement: --c (decrements then returns)
+Complex& operator--();
+
+// Postfix decrement: c-- (returns then decrements)
+Complex operator--(int);
     
     // ========================================================================
     // STREAM OPERATOR OVERLOADING (for cout and cin)
