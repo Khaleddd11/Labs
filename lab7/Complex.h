@@ -107,7 +107,7 @@ Complex& operator--();
 Complex operator--(int);
 
 //[]
-int operator[](int x);
+const double operator[](int x)const;
 
 
 

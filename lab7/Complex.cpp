@@ -228,7 +228,7 @@ ostream& operator<<(ostream &out, const Complex &c) {
 }
 
 //[]
-int Complex::operator[](int x){
+const double Complex::operator[](int x)const{
     if(x==0){
         return real;
     }
@@ -236,7 +236,8 @@ int Complex::operator[](int x){
         return imaginary;
     }
     else{
-        return -1;
+        cout << "Error: Index out of bounds! Returning real part." << endl;
+        return real;
     }
 
 }
