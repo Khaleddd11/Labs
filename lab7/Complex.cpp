@@ -227,6 +227,21 @@ ostream& operator<<(ostream &out, const Complex &c) {
     return out;
 }
 
+//[]
+int Complex::operator[](int x){
+    if(x==0){
+        return real;
+    }
+    else if (x== 1){
+        return imaginary;
+    }
+    else{
+        return -1;
+    }
+
+}
+
+
 // Input operator: allows cin >> complexNumber
 // User enters: real imaginary (e.g., "3 4" means 3+4i)
 istream& operator>>(istream &in, Complex &c) {

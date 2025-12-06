@@ -105,7 +105,12 @@ Complex& operator--();
 
 // Postfix decrement: c-- (returns then decrements)
 Complex operator--(int);
-    
+
+//[]
+int operator[](int x);
+
+
+
     // ========================================================================
     // STREAM OPERATOR OVERLOADING (for cout and cin)
     // Must be friend functions because they use cout/cin on the left side

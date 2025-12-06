@@ -64,9 +64,6 @@ cout << "After c5 += c6: " << c5 << endl;
 c5 -= c6;
 cout << "After c5 -= c6: " << c5 << endl;
 
-c5 *= c6;
-cout << "After c5 *= c6: " << c5 << endl;
-
 c5 /= c6;
 cout << "After c5 /= c6: " << c5 << endl;
 
@@ -101,6 +98,11 @@ cout << "c7 after postfix--: " << c7 << endl;
         cout << c1 << " is NOT EQUAL to " << c2 << endl;
     }
     cout << endl;
+cout<<"--- Testing operator[] ---"<<endl;
+    Complex cc(9,12);
+    cout<<cc[0]<<endl;
+    cout<<cc[1]<<endl;
+    cout<<cc[4]<<endl;
     
     // ========================================================================
     // 7. CONJUGATE
