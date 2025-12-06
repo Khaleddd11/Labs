@@ -124,6 +124,18 @@ cout<< "\n-- testing increment operator --"<<endl;
     cout << "a != b: " << (a != b ? "true" : "false") << endl;
     cout << "a < b: " << (a < b ? "true" : "false") << endl;
     cout << "b > a: " << (b > a ? "true" : "false") << endl;
+
+
+    cout<<"testing if string is emptyy or not operator "<<endl;
+    MyString notempty("hey");
+    MyString empty("");
+
+      
+    cout << "empty: \"" << empty << "\"" << endl;
+    cout << "!empty: " << (!empty ? "true" : "false") << endl;
+    
+    cout << "\nnotempty: \"" << notempty << "\"" << endl;
+    cout << "!notempty: " << (!notempty ? "true" : "false") << endl;
     
     // ========================================================================
     // 7. ARRAY ACCESS

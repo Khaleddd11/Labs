@@ -87,6 +87,9 @@ public:
     
     // Greater than: s1 > s2
     bool operator>(const MyString &other) const;
+
+    //check if empty or not 
+    bool operator!();
     
     // ========================================================================
     // ARRAY ACCESS OPERATOR

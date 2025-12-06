@@ -282,6 +282,14 @@ bool MyString::operator>(const MyString &other) const {
     return (str_cmp(str, other.str) > 0);
 }
 
+//check if empty or nor
+bool MyString::operator!(){
+    if (len == 0){
+        return true;
+    }
+    return false;
+}
+
 // ============================================================================
 // ARRAY ACCESS OPERATOR
 // ============================================================================
