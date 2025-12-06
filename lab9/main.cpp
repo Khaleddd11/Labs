@@ -88,6 +88,22 @@ cout<< "\n-- testing increment operator --"<<endl;
     
     --dec1;
     cout << "After another --dec1: \"" << dec1 << "\"" << endl;
+
+      cout << "testing multiplcation operator \"" << endl;
+    
+    MyString mult1("Ha");
+    cout << "mult1: \"" << mult1 << "\"" << endl;
+    
+    MyString mult2 = mult1 * 3;
+    cout << "mult1 * 3: \"" << mult2 << "\"" << endl;
+    
+   /* MyString mult3 = 5 * mult1;
+    cout << "5 * mult1: \"" << mult3 << "\"" << endl;
+    */
+    MyString mult4("Go! ");
+    cout << "\nmult4: \"" << mult4 << "\"" << endl;
+    cout << "mult4 * 4: \"" << (mult4 * 4) << "\"" << endl;
+    
     
     
     // ========================================================================

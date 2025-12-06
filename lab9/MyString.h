@@ -65,6 +65,9 @@ public:
 
     //remove last char
     MyString& operator--();
+
+    // repeat string
+    MyString& operator*(int x);
     
     // ========================================================================
     // COMPARISON OPERATORS

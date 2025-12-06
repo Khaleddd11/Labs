@@ -227,6 +227,27 @@ MyString& MyString::operator--() {
 
 }
 
+//repeat string
+MyString& MyString::operator*(int x){
+    char *newString = new char[(len * x)+1];
+    for( int i=0,j=0; i<len * x;i++,j++){
+        if(j>=len){
+        j=0;
+        newString[i]=str[j];
+        }
+        else{
+            newString[i]=str[j];
+
+        } 
+    }
+    newString[len*x]='\0';
+    delete[] str;
+    str= newString;
+    len = len * x;
+    return *this;
+
+}
+
 
 
 
