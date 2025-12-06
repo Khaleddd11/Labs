@@ -59,6 +59,12 @@ public:
     
     // Append C-string: s1 += "world"
     MyString& operator+=(const char *s);
+
+    // Prefix increment: ++ (adds space at end)
+    MyString& operator++();
+
+    //remove last char
+    MyString& operator--();
     
     // ========================================================================
     // COMPARISON OPERATORS

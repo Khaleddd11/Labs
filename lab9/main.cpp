@@ -71,6 +71,24 @@ int main() {
     MyString s9(" Everyone");
     s8 += s9;
     cout << "After s8 += s9: \"" << s8 << "\"" << endl;
+
+cout<< "\n-- testing increment operator --"<<endl;
+    MyString inc1("Hello");
+    cout << "Original: \"" << inc1 << "\"" << endl;
+    
+    ++inc1;
+    cout << "After ++inc1: \"" << inc1 << "\"" << endl;
+
+    cout << "\n-- tetsing decrmeent operator --" <<endl;
+     MyString dec1("Test!");
+    cout << "\nOriginal: \"" << dec1 << "\"" << endl;
+    
+    --dec1;
+    cout << "After --dec1: \"" << dec1 << "\"" << endl;
+    
+    --dec1;
+    cout << "After another --dec1: \"" << dec1 << "\"" << endl;
+    
     
     // ========================================================================
     // 6. COMPARISON

@@ -185,6 +185,51 @@ MyString& MyString::operator+=(const char *s) {
     return *this;
 }
 
+// Prefix increment: ++ (adds space at end)
+MyString& MyString::operator++() {
+     char *newString = new char[len+2];
+     for ( int i =0; i<len;i++){
+        newString[i]=str[i];
+     }
+
+     // add sapce at the end of index
+     newString[len] = ' ';
+     newString[len+1]= '\0'; 
+     //  Delete the old memory to prevent leaks
+    delete[] str;
+
+    //  Update the pointer and length
+    str = newString;
+    len++;
+
+    // Return reference to self
+    return *this; 
+}
+
+//remove last char
+MyString& MyString::operator--() { 
+    if (len == 0) {
+        return *this; 
+    }
+    // new size will be decraese by 1, however we initialaized with =len because
+    // null terminator will take last elmeent
+    char *newString= new char[len];
+    // i want here to stop before last one so i can insert null terminator
+    for (int i =0 ; i< len-1;i++){
+        newString[i]=str[i];
+    }
+    newString[len-1]='\0';
+    delete []str;
+    str = newString;
+    len--;  
+
+    return *this;
+
+}
+
+
+
+
 // ============================================================================
 // COMPARISON OPERATORS
 // ============================================================================
