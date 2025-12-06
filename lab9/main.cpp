@@ -97,9 +97,11 @@ cout<< "\n-- testing increment operator --"<<endl;
     MyString mult2 = mult1 * 3;
     cout << "mult1 * 3: \"" << mult2 << "\"" << endl;
     
-   /* MyString mult3 = 5 * mult1;
-    cout << "5 * mult1: \"" << mult3 << "\"" << endl;
-    */
+    cout<<"testing friend function"<<endl;
+    MyString mult77("hey");
+    MyString mult88= 5 * mult77;
+    cout << "5 * mult1: \"" << mult88 << "\"" << endl;
+    
     MyString mult4("Go! ");
     cout << "\nmult4: \"" << mult4 << "\"" << endl;
     cout << "mult4 * 4: \"" << (mult4 * 4) << "\"" << endl;

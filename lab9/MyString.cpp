@@ -248,6 +248,13 @@ MyString& MyString::operator*(int x){
 
 }
 
+//friend function for repeating string
+MyString operator*(int x, MyString s){
+
+    return s * x;
+
+}
+
 
 
 

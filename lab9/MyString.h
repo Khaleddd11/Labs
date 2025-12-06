@@ -68,6 +68,9 @@ public:
 
     // repeat string
     MyString& operator*(int x);
+
+    //friend function for repeating string
+    friend MyString operator*(int x, MyString);
     
     // ========================================================================
     // COMPARISON OPERATORS
