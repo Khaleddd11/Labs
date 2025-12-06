@@ -136,7 +136,101 @@ cout<< "\n-- testing increment operator --"<<endl;
     
     cout << "\nnotempty: \"" << notempty << "\"" << endl;
     cout << "!notempty: " << (!notempty ? "true" : "false") << endl;
-    
+
+    cout << "=== Testing Greater Than or Equal (>=) ===" << endl;
+
+    MyString s11("Zebra");
+    MyString s22("Apple");
+    MyString s33("Zebra");
+
+    // TEST 1: True case (Zebra is "greater" than Apple)
+    // 'Z' comes after 'A' in the dictionary
+    if (s11 >= s22) {
+        cout << "[PASS] Zebra >= Apple" << endl;
+    } else {
+        cout << "[FAIL] Zebra should be >= Apple" << endl;
+    }
+
+    // TEST 2: True case (Equality)
+    // Zebra is equal to Zebra, so >= should be true
+    if (s11 >= s33) {
+        cout << "[PASS] Zebra >= Zebra (Equality works)" << endl;
+    } else {
+        cout << "[FAIL] Equality case failed" << endl;
+    }
+
+    // TEST 3: False case (Apple is NOT greater/equal to Zebra)
+    if (s22 >= s11) {
+        cout << "[FAIL] Apple should NOT be >= Zebra" << endl;
+    } else {
+        cout << "[PASS] Apple is NOT >= Zebra (Correct)" << endl;
+    }
+  
+    cout << "=== Testing Less Than or Equal (<=) ===" << endl;
+
+    MyString strAA("Banana");
+    MyString strBB("Cherry");
+    MyString strCC("Banana");
+
+    // TEST 1: True case (Banana is "smaller" than Cherry)
+    // 'B' comes before 'C' in the dictionary
+    if (strAA <= strBB) {
+        cout << "[PASS] Banana <= Cherry" << endl;
+    } else {
+        cout << "[FAIL] Banana should be <= Cherry" << endl;
+    }
+
+    // TEST 2: True case (Equality)
+    // Banana is equal to Banana, so <= should be true
+    if (strAA <= strCC) {
+        cout << "[PASS] Banana <= Banana (Equality works)" << endl;
+    } else {
+        cout << "[FAIL] Equality case failed" << endl;
+    }
+
+    // TEST 3: False case (Cherry is NOT smaller/equal to Banana)
+    if (strBB <= strAA) {
+        cout << "[FAIL] Cherry should NOT be <= Banana" << endl;
+    } else {
+        cout << "[PASS] Cherry is NOT <= Banana (Correct)" << endl;
+    }
+
+
+    cout << "      TESTING include() METHOD           " << endl;
+
+    MyString sentencee("Khaled loves C++ so much");
+    cout << "Target String: \"" << sentencee << "\"\n" << endl;
+
+    // TEST 1: Middle of the string
+    // "quick" is definitely in there
+    if (sentencee.include("loves")) {
+        cout << "[PASS] Found 'loves'" << endl;
+    } else {
+        cout << "[FAIL] Did NOT find 'loves'" << endl;
+    }
+
+    // TEST 2: Start of the string (Prefix)
+    if (sentencee.include("Khaled")) {
+        cout << "[PASS] Found 'Khaled' (Prefix)" << endl;
+    } else {
+        cout << "[FAIL] Did NOT find 'Khaled'" << endl;
+    }
+
+    // TEST 3: End of the string (Suffix)
+    if (sentencee.include("much")) {
+        cout << "[PASS] Found 'much' (Suffix)" << endl;
+    } else {
+        cout << "[FAIL] Did NOT find 'much'" << endl;
+    }
+
+    // TEST 4: Substring DOES NOT exist
+    if (sentencee.include("Mina")) {
+        cout << "[FAIL] Found 'Mina' (Should not exist!)" << endl;
+    } else {
+        cout << "[PASS] Correctly did NOT find 'Mina'" << endl;
+    }
+
+
     // ========================================================================
     // 7. ARRAY ACCESS
     // ========================================================================

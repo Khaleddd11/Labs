@@ -89,7 +89,16 @@ public:
     bool operator>(const MyString &other) const;
 
     //check if empty or not 
-    bool operator!();
+    bool operator!() const;
+
+    //check if a string is less than or equal another string
+    bool operator<=(const MyString &other)const;
+
+    // Check if string is greater than or equal to another string
+    bool operator>=(const MyString &other) const; 
+
+    // finds 
+    bool include(const char *c)const;
     
     // ========================================================================
     // ARRAY ACCESS OPERATOR

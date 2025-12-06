@@ -283,13 +283,25 @@ bool MyString::operator>(const MyString &other) const {
 }
 
 //check if empty or nor
-bool MyString::operator!(){
+bool MyString::operator!() const{
     if (len == 0){
         return true;
     }
     return false;
 }
+//check if a string is less than or equal another string
+bool MyString::operator<=(const MyString &other) const  {
+    return str_cmp(str,other.str) <=0;
+}
 
+// Check if string is greater than or equal to another string
+bool MyString::operator>=(const MyString &other) const {
+    return str_cmp(str, other.str) >= 0;
+}
+
+bool MyString::include(const char *c) const {
+    return str_find(str, c) != -1;
+}
 // ============================================================================
 // ARRAY ACCESS OPERATOR
 // ============================================================================
