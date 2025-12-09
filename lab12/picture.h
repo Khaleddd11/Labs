@@ -19,11 +19,11 @@ private:
 // When a derived class object is assigned to a base class variable,
 // the extra data/functions of the derived part are removed (sliced off).
 // Example:
-//     Shape s = Circle();    // ❌ Circle-specific data is lost
+//     Shape s = Circle();    //  Circle-specific data is lost
 //
 // To avoid this, we store POINTERS instead of actual objects.
 // Example:
-//     Shape* s = new Circle();  // ✔ Full Circle object is preserved
+//     Shape* s = new Circle();  //  Full Circle object is preserved
 //
 // Using pointers lets us keep the entire derived object intact.
 // This allows polymorphism to work correctly (virtual functions).

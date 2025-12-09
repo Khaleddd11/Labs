@@ -142,8 +142,8 @@ OriginalType* detectType(const string& input){
     return new StringType(input);
 }
 
-// operator overload - lets us do cout << myType easily
-ostream& operator<<(ostream& os, OriginalType& obj) {
-    obj.print();
-    return os;
-}
+    // operator overload - lets us do cout << myType easily
+    ostream& operator<<(ostream& os, OriginalType& obj) {
+        obj.print();
+        return os;
+    }
