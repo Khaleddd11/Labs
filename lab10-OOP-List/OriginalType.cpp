@@ -115,7 +115,7 @@ OriginalType* detectType(const string& input){
     // try integer if no dots
     if(isInt && dotCount == 0) {
         try {
-            size_t idx;
+            size_t idx; //unsigned integer type
             int intVal = stoi(input, &idx);
             if(idx == input.length()) {
                 return new IntType(intVal);

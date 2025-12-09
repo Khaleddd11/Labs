@@ -59,6 +59,9 @@ void List::add(OriginalType *obj) {
 }
 
 // add from string - uses detectType to figure out what to create
+ // Strings are special because they could represent:
+    // - an integer ("123")
+    // - a float ("3.14")
 void List::add(string v){
     OriginalType *obj = detectType(v);
     this->add(obj);
