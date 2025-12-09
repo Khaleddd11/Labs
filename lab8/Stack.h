@@ -4,14 +4,11 @@
 #include <iostream>
 using namespace std;
 
-// ============================================================================
 // Stack Class
 // A simple stack data structure (LIFO - Last In First Out)
 // Like a stack of plates: you add on top and remove from top
 // 
 // Uses dynamic memory allocation (HEAP) with pointers
-// Demonstrates DEEP COPY concept
-// ============================================================================
 class Stack {
 private:
     // Private member variables
@@ -20,9 +17,8 @@ private:
     int capacity;   // Maximum size of stack
     
 public:
-    // ========================================================================
+
     // CONSTRUCTORS AND DESTRUCTOR
-    // ========================================================================
     
     // Default constructor: creates empty stack with default size (10)
     Stack();

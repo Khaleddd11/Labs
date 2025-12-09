@@ -11,8 +11,8 @@ public:
     virtual void draw(SDL_Renderer* renderer) const = 0;
 
     // "virtual destructor" is important here
-    // It ensures that if we delete a "Shape*", the specific destructor
-    // for "Point" or "Circle" gets called too. Prevents memory leaks.
+    // It ensures that if we delete a "Shape*"
+    // Prevents memory leaks.
     virtual ~Shape() {}              
 };
 

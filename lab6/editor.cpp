@@ -74,8 +74,11 @@ int getNumberInput(int x, int y) {
         
         // ENTER - convert and return
         if (key == KEY_ENTER && input.length() > 0) {
-            int num = 0;
+            int num = 0; // Final converted number
+            // Manual conversion from string → integer
+            // Example: "123" → 123
             for (size_t i = 0; i < input.length(); i++) {
+                // Multiply previous digits by 10 and add current digit
                 num = num * 10 + (input[i] - '0');
             }
             return num;
@@ -276,22 +279,26 @@ void editText(Editor *editor) {
             }
         }
         
-        // ===== DELETE KEY (we'll use 'd' for simplicity) =====
+        // DELETE KEY  i use  'd' for simplicity
         // Deletes character at cursor position
         
-        // ===== PRINTABLE CHARACTER - Insert at cursor =====
+        // Insert at cursor
         // Check if it's a printable ASCII character (space to ~)
         if (key >= 32 && key <= 126) {
-            // Check if there's room
+            // here we make sure we haven't filled the entire memory block yet.
             if (editor->length < editor->size) {
-                // Shift characters after cursor one position right
-                // Start from end and move backwards
-                // Using POINTER ARITHMETIC
+        // here we do the shhifting first 
+        // This loop moves characters to the right to create a "gap" for the new one.
+        // It starts at the very end of the string and works BACKWARDS to the cursor.
+        // NOTE: If inserting at the end, (length == cursor), this loop does NOT run.
                 for (int i = editor->length; i > editor->cursor; i--) {
+                    // Copy the character from the left (i-1) to the current spot (i)
                     *(editor->text + i) = *(editor->text + i - 1);
                 }
                 
-                // Insert new character at cursor position
+        // here we insert 
+        // Write the new character into the gap we just created (or at the end).
+        // 'text + cursor' points to the specific memory slot.
                 *(editor->text + editor->cursor) = (char)key;
                 
                 // Update length and move cursor forward
@@ -302,10 +309,7 @@ void editText(Editor *editor) {
     }
 }
 
-// ============================================================================
-// SAVE TO FILE
 // Saves the text buffer to a file using fstream
-// ============================================================================
 bool saveToFile(Editor *editor) {
     clearScreen();
     

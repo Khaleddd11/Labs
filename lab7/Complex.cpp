@@ -44,14 +44,8 @@ void Complex::setImaginary(double i) {
     imaginary = i;
 }
 
-// ============================================================================
-// ARITHMETIC OPERATORS
-// ============================================================================
 
-// Example: (3+4i) + (1+2i) = 4+6i
-// the const at the end refers to the current object (this) being constant, 
-// Running this function will not modify the object that called it."
-// when we calculate A + B, A should not change either. The result is a new thing entirely.
+// ARITHMETIC OPERATORS
 Complex Complex::operator+(const Complex &other) const {
     // Create new Complex number with sum
     Complex result;
@@ -61,7 +55,6 @@ Complex Complex::operator+(const Complex &other) const {
 }
 
 
-// Example: (5+6i) - (2+3i) = 3+3i
 Complex Complex::operator-(const Complex &other) const {
     Complex result;
     result.real = this->real - other.real;           // Subtract real parts
@@ -86,7 +79,7 @@ Complex Complex::operator*(const Complex &other) const {
 // Formula: multiply top and bottom by conjugate of denominator
 // Result: [(ac+bd) + (bc-ad)i] / (c²+d²)
 // Example: (4+2i) / (1+1i) = 3 - 1i
-Complex Complex::operator/(const Complex &other) const {
+/*Complex Complex::operator/(const Complex &other) const {
     Complex result;
     
     // Calculate denominator: c² + d²
@@ -107,12 +100,10 @@ Complex Complex::operator/(const Complex &other) const {
     return result;
 }
 
+*/
 
 
-// ============================================================================
 // COMPOUND ASSIGNMENT OPERATORS
-// ============================================================================
-
 // += operator: adds another complex number to this one
 // Example: c1 += c2 means c1 = c1 + c2
 Complex& Complex::operator+=(const Complex &other) {
@@ -130,7 +121,7 @@ Complex& Complex::operator-=(const Complex &other) {
 }
 
 // /= operator: divides this complex number by another
-Complex& Complex::operator/=(const Complex &other) {
+/*Complex& Complex::operator/=(const Complex &other) {
     double denominator = (other.real * other.real) + (other.imaginary * other.imaginary);
     
     if (denominator == 0) {
@@ -141,21 +132,20 @@ Complex& Complex::operator/=(const Complex &other) {
     // save old values
     double oldReal = this->real;
     double oldImag = this->imaginary;
-    
+    s
     // calculate new values
     this->real = ((oldReal * other.real) + (oldImag * other.imaginary)) / denominator;
     this->imaginary = ((oldImag * other.real) - (oldReal * other.imaginary)) / denominator;
     
     return *this;
 }
+*/
 
 
 
 
-
-// ============================================================================
 // INCREMENT AND DECREMENT OPERATORS
-// ============================================================================
+
 
 // Prefix ++: increment both real and imaginary by 1, then return
 // Example: ++c means c becomes (real+1) + (imag+1)i
@@ -192,10 +182,7 @@ Complex Complex::operator--(int) {
     return temp;
 }
 
-// ============================================================================
 // COMPARISON OPERATORS
-// ============================================================================
-
 // Equal: two complex numbers are equal if both real and imaginary parts match
 bool Complex::operator==(const Complex &other) const {
     return (this->real == other.real) && (this->imaginary == other.imaginary);

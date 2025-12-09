@@ -47,7 +47,6 @@ void Picture::draw(SDL_Renderer* renderer) const {
     if (!renderer) return;
     
     // draw each shape using polymorphism
-    // each shape knows how to draw itself
     for (const Shape* shape : shapes) {
         if (shape) {
             shape->draw(renderer);

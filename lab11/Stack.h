@@ -6,7 +6,7 @@ using namespace std;
 
 // Template Stack class
 // Can work with any type: int, double, string, Complex, etc.
-// Just put the type in angle brackets: Stack<int>, Stack<string>
+// we just put the type in angle brackets: Stack<int>, Stack<string>
 template <typename T>
 class Stack {
 private:
@@ -52,13 +52,12 @@ public:
     void clear();
 };
 
-// IMPORTANT: For templates, we put implementation in same file!
+// For templates, we put implementation in same file!
 // Or include the .cpp at end of .h
 // This is because compiler needs to see the code when instantiating templates
 
-// ============================================================================
+
 // IMPLEMENTATION
-// ============================================================================
 
 // Constructor
 template <typename T>

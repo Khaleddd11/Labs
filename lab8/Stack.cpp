@@ -44,16 +44,13 @@ Stack::Stack(const Stack &other) {
     cout << "[Copy Constructor] Deep copy created" << endl;
 }
 
-// Destructor: frees the memory when stack is destroyed
-// CRITICAL: Without this, we have memory leaks!
+// Destructor: frees the memory when stack is destroyeddddd
 Stack::~Stack() {
     delete[] arr;  // Free the HEAP memory
     cout << "[Destructor] Stack destroyed, memory freed" << endl;
 }
 
-// ============================================================================
 // ASSIGNMENT OPERATOR (for deep copy)
-// ============================================================================
 
 // Copy assignment operator: allows stack1 = stack2
 // Also does DEEP COPY to avoid memory sharing problems
@@ -130,9 +127,7 @@ int Stack::peek() const {
     return arr[top];
 }
 
-// ============================================================================
 // UTILITY METHODS
-// ============================================================================
 
 // Check if stack is empty
 bool Stack::isEmpty() const {

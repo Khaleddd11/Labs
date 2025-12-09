@@ -5,13 +5,7 @@
 using namespace std;
 
 int main() {
-    cout << "=====================================" << endl;
-    cout << "  Template Stack Demo" << endl;
-    cout << "=====================================" << endl;
-    
-    // ========================================================================
-    // 1. INTEGER STACK
-    // ========================================================================
+        // 1. INTEGER STACK
     cout << "\n--- Integer Stack ---" << endl;
     
     Stack<int> intStack(5);  // stack of integers, capacity 5
